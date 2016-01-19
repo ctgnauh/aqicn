@@ -1,0 +1,249 @@
+{
+  "level": [
+    {
+      "name": {
+        "en": "",
+        "cn": "",
+        "jp": "",
+        "es": "",
+        "kr": "",
+        "ru": "",
+        "hk": "",
+        "fr": "",
+        "pl": ""
+      },
+      "implication": {
+        "en": "",
+        "cn": "",
+        "jp": "",
+        "es": "",
+        "kr": "",
+        "ru": "",
+        "hk": "",
+        "fr": "",
+        "pl": ""
+      },
+      "statement": {
+        "en": "",
+        "cn": "",
+        "jp": "",
+        "es": "",
+        "kr": "",
+        "ru": "",
+        "hk": "",
+        "fr": "",
+        "pl": ""
+      }
+    },
+    {
+      "name": {
+        "en": "Good",
+        "cn": "优",
+        "jp": "",
+        "es": "",
+        "kr": "",
+        "ru": "",
+        "hk": "",
+        "fr": "",
+        "pl": ""
+      },
+      "implication": {
+        "en": "Air quality is considered satisfactory, and air pollution poses little or no risk",
+        "cn": "空气质量令人满意，基本无空气污染",
+        "jp": "",
+        "es": "",
+        "kr": "",
+        "ru": "",
+        "hk": "",
+        "fr": "",
+        "pl": ""
+      },
+      "statement": {
+        "en": "None",
+        "cn": "各类人群可正常活动",
+        "jp": "",
+        "es": "",
+        "kr": "",
+        "ru": "",
+        "hk": "",
+        "fr": "",
+        "pl": ""
+      }
+    },
+    {
+      "name": {
+        "en": "Moderate",
+        "cn": "良",
+        "jp": "",
+        "es": "",
+        "kr": "",
+        "ru": "",
+        "hk": "",
+        "fr": "",
+        "pl": ""
+      },
+      "implication": {
+        "en": "Air quality is acceptable; however, for some pollutants there may be a moderate health concern for a very small number of people who are unusually sensitive to air pollution.",
+        "cn": "空气质量可接受，但某些污染物可能对极少数异常敏感人群健康有较弱影响",
+        "jp": "",
+        "es": "",
+        "kr": "",
+        "ru": "",
+        "hk": "",
+        "fr": "",
+        "pl": ""
+      },
+      "statement": {
+        "en": "Active children and adults, and people with respiratory disease, such as asthma, should limit prolonged outdoor exertion.",
+        "cn": "极少数异常敏感人群应减少户外活动",
+        "jp": "",
+        "es": "",
+        "kr": "",
+        "ru": "",
+        "hk": "",
+        "fr": "",
+        "pl": ""
+      }
+    },
+    {
+      "name": {
+        "en": "Unhealthy for Sensitive Groups",
+        "cn": "轻度污染",
+        "jp": "",
+        "es": "",
+        "kr": "",
+        "ru": "",
+        "hk": "",
+        "fr": "",
+        "pl": ""
+      },
+      "implication": {
+        "en": "Members of sensitive groups may experience health effects. The general public is not likely to be affected.",
+        "cn": "易感人群症状有轻度加剧，健康人群出现刺激症状",
+        "jp": "",
+        "es": "",
+        "kr": "",
+        "ru": "",
+        "hk": "",
+        "fr": "",
+        "pl": ""
+      },
+      "statement": {
+        "en": "Active children and adults, and people with respiratory disease, such as asthma, should limit prolonged outdoor exertion.",
+        "cn": "儿童、老年人及心脏病、呼吸系统疾病患者应减少长时间、高强度的户外锻炼",
+        "jp": "",
+        "es": "",
+        "kr": "",
+        "ru": "",
+        "hk": "",
+        "fr": "",
+        "pl": ""
+      }
+    },
+    {
+      "name": {
+        "en": "Unhealthy",
+        "cn": "中度污染",
+        "jp": "",
+        "es": "",
+        "kr": "",
+        "ru": "",
+        "hk": "",
+        "fr": "",
+        "pl": ""
+      },
+      "implication": {
+        "en": "Everyone may begin to experience health effects; members of sensitive groups may experience more serious health effects",
+        "cn": "进一步加剧易感人群症状，可能对健康人群心脏、呼吸系统有影响",
+        "jp": "",
+        "es": "",
+        "kr": "",
+        "ru": "",
+        "hk": "",
+        "fr": "",
+        "pl": ""
+      },
+      "statement": {
+        "en": "Active children and adults, and people with respiratory disease, such as asthma, should avoid prolonged outdoor exertion; everyone else, especially children, should limit prolonged outdoor exertion",
+        "cn": "儿童、老年人及心脏病、呼吸系统疾病患者避免长时间、高强度的户外锻炼，一般人群适量减少户外运动",
+        "jp": "",
+        "es": "",
+        "kr": "",
+        "ru": "",
+        "hk": "",
+        "fr": "",
+        "pl": ""
+      }
+    },
+    {
+      "name": {
+        "en": "Very Unhealthy",
+        "cn": "重度污染",
+        "jp": "",
+        "es": "",
+        "kr": "",
+        "ru": "",
+        "hk": "",
+        "fr": "",
+        "pl": ""
+      },
+      "implication": {
+        "en": "Health warnings of emergency conditions. The entire population is more likely to be affected.",
+        "cn": "心脏病和肺病患者症状显著加剧，运动耐受力降低，健康人群普遍出现症状",
+        "jp": "",
+        "es": "",
+        "kr": "",
+        "ru": "",
+        "hk": "",
+        "fr": "",
+        "pl": ""
+      },
+      "statement": {
+        "en": "Active children and adults, and people with respiratory disease, such as asthma, should avoid all outdoor exertion; everyone else, especially children, should limit outdoor exertion.",
+        "cn": "儿童、老年人及心脏病、肺病患者应停留在室内，停止户外运动，一般人群减少户外运动",
+        "jp": "",
+        "es": "",
+        "kr": "",
+        "ru": "",
+        "hk": "",
+        "fr": "",
+        "pl": ""
+      }
+    },
+    {
+      "name": {
+        "en": "Hazardous",
+        "cn": "严重污染",
+        "jp": "",
+        "es": "",
+        "kr": "",
+        "ru": "",
+        "hk": "",
+        "fr": "",
+        "pl": ""
+      },
+      "implication": {
+        "en": "Health alert: everyone may experience more serious health effects",
+        "cn": "健康人群运动耐受力降低，有明显强烈症状，提前出现某些疾病",
+        "jp": "",
+        "es": "",
+        "kr": "",
+        "ru": "",
+        "hk": "",
+        "fr": "",
+        "pl": ""
+      },
+      "statement": {
+        "en": "Everyone should avoid all outdoor exertion",
+        "cn": "儿童、老年人和病人应停留在室内，避免体力消耗，一般人群避免户外活动",
+        "jp": "",
+        "es": "",
+        "kr": "",
+        "ru": "",
+        "hk": "",
+        "fr": "",
+        "pl": ""
+      }
+    }
+  ]
+}
