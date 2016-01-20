@@ -5,42 +5,55 @@
  * @license MIT
  */
 
-"use strict";
-
 var aqicn = require('../index.js');
 var assert = require('chai').assert;
 
 var options = {
   city: 'beijing',
   aqi: 'pm25',
-  lang: 'cn'
+  lang: 'cn',
+  output: ""
 };
 
-describe('fetchWebPage', function () {
-  this.timeout(1000);
-  it('should fetch web page from http://aqicn.org/beijing/m/', function () {
-    aqicn.fetchWebPage(options.city, function (err, res) {
-      assert.typeOf(aqicn.selectAQIText(res, options.aqi), 'number');
+describe('aqicn', function () {
+  afterEach(function() {
+    // console.log(options.output);
+  });
+  describe('#fetchWebPage()', function () {
+    this.timeout(10000);
+    it('should fetch web page from http://aqicn.org/beijing/m/', function () {
+      aqicn.fetchWebPage(options.city, function (err, res) {
+        assert.isNumber(aqicn.selectAQIText(res, options.aqi));
+      });
     });
   });
-});
 
-describe('getAQIs', function () {
-  this.timeout(4000);
-  it('should get all aqis', function (done) {
-    aqicn.getAQIs(options.city, options.lang, function (err, res) {
-      assert.equal(err, null);
-      done();
+  describe('#getAQIs()', function () {
+    this.timeout(10000);
+    it('should get all aqis', function (done) {
+      aqicn.getAQIs(options.city, options.lang, function (err, res) {
+        options.output = res;
+        assert.equal(err, null);
+        assert.isNumber(res.pm25);
+        assert.isString(res.city);
+        assert.isObject(res.level);
+        assert.notEqual(res.level.value, 0);
+        done();
+      });
     });
   });
-});
 
-describe('getAQIByName', function () {
-  this.timeout(4000);
-  it('should get pm2.5', function (done) {
-    aqicn.getAQIByName(options.city, options.aqi, function (err, res) {
-      assert.equal(err, null);
-      done();
+  describe('#getAQIByName()', function () {
+    this.timeout(10000);
+    it('should get pm2.5', function (done) {
+      aqicn.getAQIByName(options.city, options.aqi, function (err, res) {
+        options.output = res;
+        assert.equal(err, null);
+        assert.isString(res.city);
+        assert.isNumber(res.value);
+        done();
+      });
     });
   });
+
 });

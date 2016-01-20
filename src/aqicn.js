@@ -49,13 +49,13 @@ module.exports = {
    */
   selectAQIText: function (body, name) {
     'use strict';
+    var self = this;
     if (!body) {
       return -1;
     }
     var $ = cheerio.load(body);
     var json = JSON.parse($('#table script').text().slice(12, -2));   // "genAqiTable({...})"
-    var aqis = ['pm25', 'pm10', 'o3', 'no2', 'so2', 'co'];
-    var value = aqis.indexOf(name);
+    var value = self.info.species.indexOf(name);
     return json.d[value].iaqi;
   },
 
@@ -128,30 +128,27 @@ module.exports = {
   getAQIs: function (city, lang, callback) {
     'use strict';
     var self = this;
-    this.fetchWebPage(city, function (err, body) {
+    self.fetchWebPage(city, function (err, body) {
       if (err) {
         callback(err);
       }
-      var pm25 = self.selectAQIText(body, 'pm25'),
-          pm10 = self.selectAQIText(body, 'pm10'),
-          o3 = self.selectAQIText(body, 'o3'),
-          no2 = self.selectAQIText(body, 'no2'),
-          so2 = self.selectAQIText(body, 'so2'),
-          co = self.selectAQIText(body, 'co'),
-          aqi = self.calculateAQI([pm25, pm10, o3, no2, so2, co]),
-          level = self.calculateLevel(aqi),
-          levelInfo = self.selectInfoText(level, lang);
-      callback(null, {
-        aqi: aqi,
-        city: city,
-        pm25: pm25,
-        pm10: pm10,
-        o3: o3,
-        no2: no2,
-        so2: so2,
-        co: co,
-        level: levelInfo
+      var result = {};
+      var aqis = [];
+      // 全部 AQI 值
+      self.info.species.forEach(function (name) {
+        var aqi = self.selectAQIText(body, name);
+        aqis.push(aqi);
+        result[name] = aqi;
       });
+      // 主要 AQI 值
+      result.aqi = self.calculateAQI(aqis);
+      // 城市代码
+      result.city = city;
+      // AQI 等级及其它
+      var level = self.calculateLevel(result.aqi);
+      var levelInfo = self.selectInfoText(level, lang);
+      result.level = levelInfo;
+      callback(null, result);
     });
   },
 
@@ -169,7 +166,8 @@ module.exports = {
    */
   getAQIByName: function (city, name, callback) {
     'use strict';
-    this.getAQIs(city, 'cn', function (err, res) {
+    var self = this;
+    self.getAQIs(city, 'cn', function (err, res) {
       if (err) {
         callback(err);
       }

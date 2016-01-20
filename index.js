@@ -1,5 +1,8 @@
 /**
- * Created by Tristan Huang <huangtc@outlook.com> on 16/1/7.
+ * @fileOverview
+ * @name index.js
+ * @author ctgnauh <huangtc@outlook.com>
+ * @license MIT
  */
 
 module.exports = require('./src/aqicn.js');

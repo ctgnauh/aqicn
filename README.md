@@ -1,4 +1,4 @@
-# aqicn - 一个aqicn.org 的非官方 API
+# aqicn
 
 [![Build Status](https://img.shields.io/travis/ctgnauh/aqicn/master.svg)](https://travis-ci.org/ctgnauh/aqicn)
 [![David Dependencies](https://img.shields.io/david/ctgnauh/aqicn.svg)](https://david-dm.org/ctgnauh/aqicn)
@@ -6,9 +6,13 @@
 [![npm](https://img.shields.io/npm/v/aqicn.svg)](https://www.npmjs.com/package/aqicn)
 [![npm](https://img.shields.io/npm/l/aqicn.svg)](https://www.npmjs.com/package/aqicn)
 
+一个aqicn.org 的非官方 API。
+
 ## 安装
 
-    npm install aqicn --save
+```
+npm install aqicn --save
+```
 
 ## 使用
 
@@ -26,13 +30,10 @@ aqicn.getAQIByName('beijing', 'pm25', function (err, res) {
 };
 
 // 已知 AQI 等级时，查询对应的信息
-var level = 5;
-// AQI 级别名
-aqicn.info.level[level].name.cn;
-// 对健康的影响
-aqicn.info.level[level].implication.cn;
-// 建议采取的措施
-aqicn.info.level[level].statement.cn;
+var lv = 5;
+aqicn.info.level[lv].name.cn;   // AQI 级别名
+aqicn.info.level[lv].implication.cn;   // 对健康的影响
+aqicn.info.level[lv].statement.cn;   // 建议采取的措施
 ```
 
 ## 问题
