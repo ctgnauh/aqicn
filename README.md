@@ -25,7 +25,7 @@ var aqicn = require('aqicn');
 获取指定城市的全部 AQI 值：
 
 ```javascript
-aqicn.getAQIs('beijing', function (err, res) {
+aqicn.getAQIs('beijing', 'cn', function (err, res) {
   console.log(res);
 };
 ```
@@ -74,9 +74,10 @@ aqicn.getAQIByName('beijing', 'pm25', function (err, res) {
 
 ```javascript
 var lv = 5;
-aqicn.info.level[lv].name.cn;   // AQI 级别名
-aqicn.info.level[lv].implication.cn;   // 对健康的影响
-aqicn.info.level[lv].statement.cn;   // 建议采取的措施
+var lang = 'cn';
+aqicn.info.level[lv].name[lang];   // AQI 级别名
+aqicn.info.level[lv].implication[lang];   // 对健康的影响
+aqicn.info.level[lv].statement[lang];   // 建议采取的措施
 ```
 
 ## 问题
