@@ -6,7 +6,7 @@
 [![npm](https://img.shields.io/npm/v/aqicn.svg)](https://www.npmjs.com/package/aqicn)
 [![npm](https://img.shields.io/npm/l/aqicn.svg)](https://www.npmjs.com/package/aqicn)
 
-一个aqicn.org 的非官方 API。
+一个 [aqicn.org](http://aqicn.org) 的非官方 API。
 
 ## 安装
 
@@ -16,20 +16,63 @@ npm install aqicn --save
 
 ## 使用
 
+加载模块：
+
 ```javascript
 var aqicn = require('aqicn');
+```
 
-// 获取指定城市的全部AQI
+获取指定城市的全部 AQI 值：
+
+```javascript
 aqicn.getAQIs('beijing', function (err, res) {
   console.log(res);
 };
+```
 
-// 获取指定城市的某一种AQI
+输出：
+
+```javascript
+{
+  city: 'beijing',
+  time: '2016-01-21T21:00:00+09:00',
+  pm25: 212,
+  pm10: 95,
+  o3: 4,
+  no2: 37,
+  so2: 14,
+  co: 28,
+  aqi: 212,
+  level: {
+    value: 5,
+    name: '重度污染',
+    implication: '心脏病和肺病患者症状显著加剧，运动耐受力降低，健康人群普遍出现症状',
+    statement: '儿童、老年人及心脏病、肺病患者应停留在室内，停止户外运动，一般人群减少户外运动'
+  }
+}
+```
+
+获取指定城市的某一种 AQI 值：
+
+```javascript
 aqicn.getAQIByName('beijing', 'pm25', function (err, res) {
   console.log(res);
 };
+```
 
-// 已知 AQI 等级时，查询对应的信息
+输出：
+
+```javascript
+{
+  city: 'beijing',
+  value: 212,
+  time: '2016-01-21T21:00:00-09:00'
+}
+```
+
+已知 AQI 等级查询对应的信息：
+
+```javascript
 var lv = 5;
 aqicn.info.level[lv].name.cn;   // AQI 级别名
 aqicn.info.level[lv].implication.cn;   // 对健康的影响

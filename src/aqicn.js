@@ -59,6 +59,19 @@ module.exports = {
     return json.d[value].iaqi;
   },
 
+
+  /**
+   * 分析 html 文件并返回更新时间
+   * @param {string} body - 页面文本
+   * @returns {string} ISO格式的时间
+   */
+  selectUpdateTime: function (body) {
+    'use strict';
+    var $ = cheerio.load(body);
+    var json = JSON.parse($('#table script').text().slice(12, -2));   // "genAqiTable({...})"
+    return json.t;
+  },
+
   /**
    * 污染等级及相关信息
    * @param {number} level - AQI 级别
@@ -134,6 +147,10 @@ module.exports = {
       }
       var result = {};
       var aqis = [];
+      // 城市代码
+      result.city = city;
+      // 数据提供时间
+      result.time = self.selectUpdateTime(body);
       // 全部 AQI 值
       self.info.species.forEach(function (name) {
         var aqi = self.selectAQIText(body, name);
@@ -142,8 +159,6 @@ module.exports = {
       });
       // 主要 AQI 值
       result.aqi = self.calculateAQI(aqis);
-      // 城市代码
-      result.city = city;
       // AQI 等级及其它
       var level = self.calculateLevel(result.aqi);
       var levelInfo = self.selectInfoText(level, lang);
@@ -173,7 +188,8 @@ module.exports = {
       }
       callback(null, {
         city: city,
-        value: res[name]
+        value: res[name],
+        time: res.time
       });
     });
   }

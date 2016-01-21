@@ -23,7 +23,7 @@ describe('aqicn', function () {
     this.timeout(10000);
     it('should fetch web page from http://aqicn.org/beijing/m/', function () {
       aqicn.fetchWebPage(options.city, function (err, res) {
-        assert.isNumber(aqicn.selectAQIText(res, options.aqi));
+        assert.notEqual(res, '');
       });
     });
   });
@@ -38,6 +38,7 @@ describe('aqicn', function () {
         assert.isString(res.city);
         assert.isObject(res.level);
         assert.notEqual(res.level.value, 0);
+        assert.isString(res.time);
         done();
       });
     });
