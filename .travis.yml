@@ -1,11 +1,19 @@
 language: node_js
 node_js:
-  - '5.1.0'
-  - '0.11'
-  - '0.10'
+- '5.1.0'
+- '0.11'
+- '0.10'
 notifications:
   email:
     recipients:
-      - huangtc@outlook.com
+    - huangtc@outlook.com
     on_success: change
     on_failure: change
+deploy:
+  provider: npm
+  email: huangtc@outlook.com
+  api_key:
+    secure: nerEpq/uEyDunIC7SwHeuDTAOAVaNYcMEbo4zhQzet2GvpGRKeu+EOnX6N0Uk8oU9khNIUtsdGxaTWo4/QaOFuGthbsr9nDokfj43uOx0AV3Y4yUzONZMmZgc/Ml+WchxrrOhhNtDtRswqucltydnU8c2Au8rlT/7h+e1tuSHRJur2lRsIkXuuOckqAvmpYK78ke+4SXWeI1SmVEfCzEBNzvl+8gdQi3HqERdoQR+EomXuVJuweyK+YI7QySDVDEdbx2IRscwSz+W3kw5LcHkXZvYyxbQuDAnwB+xmDsMyZgdmSX89KCbRcJSCR5Q6jK3E5Z4g04s4nv9ScjT/70lRdKSiYpQJGmUh/e1iz+dTjpek3seGkUoB5msnJN3YlIX2PrbXsoSmKyECMC6qC4ROe2rgrkCmpAP8wx0ADGtDWmmz/wt+SQ1jstEZlzhM7TVYWoJFQcvqowIfDX1usKNeHrJw5OgkPngiZarSydKgtVwj5aTMUGpwUYUB2fH3XnA22siLCj1v5l3MgPWbOS+7+NFdsf/znldjTLND25/h9xxYdd3316gmPdQtU8Iy77CRP09Qscta+Vg8ICV0hpnCZwB596Mwv37QoxaBON1bNGMgp8cymSpulseb/nSmF1rXQIWA1OZM/CX8F+eyfM9GJFqAAvDeRjRlTAh03sUJQ=
+  on:
+    tags: true
+    repo: ctgnauh/aqicn
