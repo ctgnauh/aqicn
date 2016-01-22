@@ -50,12 +50,15 @@ module.exports = {
   selectAQIText: function (body, name) {
     'use strict';
     var self = this;
-    if (!body) {
-      return -1;
-    }
     var $ = cheerio.load(body);
-    var json = JSON.parse($('#table script').text().slice(12, -2));   // "genAqiTable({...})"
-    var value = self.info.species.indexOf(name);
+    var json;
+    var value;
+    try {
+      json = JSON.parse($('#table script').text().slice(12, -2));   // "genAqiTable({...})"
+      value = self.info.species.indexOf(name);
+    } catch (err) {
+      return NaN;
+    }
     return json.d[value].iaqi;
   },
 
@@ -68,7 +71,12 @@ module.exports = {
   selectUpdateTime: function (body) {
     'use strict';
     var $ = cheerio.load(body);
-    var json = JSON.parse($('#table script').text().slice(12, -2));   // "genAqiTable({...})"
+    var json;
+    try {
+      json = JSON.parse($('#table script').text().slice(12, -2));   // "genAqiTable({...})"
+    } catch (err) {
+      return new Date(0).toISOString();
+    }
     return json.t;
   },
 
@@ -81,7 +89,7 @@ module.exports = {
   selectInfoText: function (level, lang) {
     'use strict';
     var self = this;
-    if (level < 0) {
+    if (level > 6 || level < 0) {
       level = 0;
     }
     return {

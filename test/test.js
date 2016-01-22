@@ -37,7 +37,6 @@ describe('aqicn', function () {
         assert.isNumber(res.pm25);
         assert.isString(res.city);
         assert.isObject(res.level);
-        assert.notEqual(res.level.value, 0);
         assert.isString(res.time);
         done();
       });
