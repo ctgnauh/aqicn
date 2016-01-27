@@ -32,7 +32,13 @@ module.exports = {
    */
   fetchWebPage: function (city, callback) {
     'use strict';
-    request.get('http://aqicn.org/city/' + city + '/m/', function (err, res, body) {
+    var options = {
+      url: 'http://aqicn.org/city/' + city + '/m/',
+      headers: {
+        'User-Agent': 'wget'
+      }
+    };
+    request.get(options, function (err, res, body) {
       if (err) {
         callback(err, '');
       } else {
