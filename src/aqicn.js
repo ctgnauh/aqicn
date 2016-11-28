@@ -18,35 +18,6 @@ module.exports = {
   info: info,
 
   /**
-   * fetchWebPage 的 callback
-   * @callback module:aqicn~fetchWebPageCallback
-   * @param {object} error - 请求错误
-   * @param {object} result - 页面文本
-   */
-  /**
-   * 抓取移动版 aqicn.org 页面。
-   * aqicn.org 桌面版在300kb以上，而移动版则不足70kb。所以使用移动版，链接后面加 /m/ 。
-   * @param {string} city - 城市或地区代码，详见[全部地区](http://aqicn.org/city/all/)
-   * @param {module:aqicn~fetchWebPageCallback} callback
-   */
-  fetchWebPage: function (city, callback) {
-    'use strict';
-    var options = {
-      url: 'http://aqicn.org/city/' + city + '/m/',
-      headers: {
-        'User-Agent': 'wget'
-      }
-    };
-    request.get(options, function (err, res, body) {
-      if (err) {
-        callback(err, '');
-      } else {
-        callback(null, body);
-      }
-    });
-  },
-
-  /**
    * fetchAndroidAPI 的 callback
    * @callback module:aqicn~fetchAndroidAPICallback
    * @param {object} error - 请求错误
@@ -74,7 +45,7 @@ module.exports = {
   },
 
   /**
-   * 分析 html 文件并返回指定的 AQI 值
+   * 分析 json 文件并返回指定的 AQI 值
    * @param {string} body - 页面文本
    * @param {string} name - 污染物代码：pm25、pm10、o3、no2、so2、co
    * @returns {number} AQI 值
@@ -93,7 +64,7 @@ module.exports = {
 
 
   /**
-   * 分析 html 文件并返回更新时间
+   * 分析 json 文件并返回更新时间
    * @param {string} body - 页面文本
    * @returns {string} ISO格式的时间
    */
