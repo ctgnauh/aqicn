@@ -76,7 +76,7 @@ module.exports = {
     } catch (err) {
       return NaN;
     }
-      return new Date(json.time).toISOString();
+      return new Date(json.time*1000).toISOString();
   },
 
   /**
