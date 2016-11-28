@@ -19,10 +19,10 @@ describe('aqicn', function () {
   afterEach(function() {
     // console.log(options.output);
   });
-  describe('#fetchWebPage()', function () {
+  describe('#fetchAndroidAPI()', function () {
     this.timeout(10000);
     it('should fetch web page from http://aqicn.org/beijing/m/', function () {
-      aqicn.fetchWebPage(options.city, function (err, res) {
+      aqicn.fetchAndroidAPI(options.city, function (err, res) {
         assert.notEqual(res, '');
       });
     });

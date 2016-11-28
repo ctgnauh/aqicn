@@ -1,5 +1,12 @@
 {
-  "species": ["pm25", "pm10", "o3", "no2", "so2", "co"],
+  "pollutants": [
+    {"key": "pm25", "name": "PM2.5"},
+    {"key": "pm10", "name": "PM10"},
+    {"key": "o3", "name": "O3"},
+    {"key": "no2", "name": "no2"},
+    {"key": "so2", "name": "so2"},
+    {"key": "co", "name": "co"}
+  ],
   "level": [
     {
       "name": {

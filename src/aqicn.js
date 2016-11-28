@@ -6,7 +6,6 @@
  */
 
 var request = require('request');
-var cheerio = require('cheerio');
 var info = require('./info.json');
 
 /**
@@ -48,6 +47,33 @@ module.exports = {
   },
 
   /**
+   * fetchAndroidAPI 的 callback
+   * @callback module:aqicn~fetchAndroidAPICallback
+   * @param {object} error - 请求错误
+   ＊@param {string} result - json 文本
+  /**
+   * 抓取 aqicn.org 的 android 接口
+   * @param {string} city
+   * @param {module:aqicn~fetchAndroidAPICallback} callback
+   */
+  fetchAndroidAPI: function (city, callback) {
+    'use strict';
+    var options = {
+      url: 'http://aqicn.org/aqicn/json/android/' + city + '/json',
+      headers: {
+        'User-Agent': 'wget'
+      }
+    };
+    request.get(options, function (err, res, body) {
+      if (err) {
+        callback(err, '');
+      } else {
+        callback(null, body);
+      }
+    });
+  },
+
+  /**
    * 分析 html 文件并返回指定的 AQI 值
    * @param {string} body - 页面文本
    * @param {string} name - 污染物代码：pm25、pm10、o3、no2、so2、co
@@ -56,16 +82,13 @@ module.exports = {
   selectAQIText: function (body, name) {
     'use strict';
     var self = this;
-    var $ = cheerio.load(body);
     var json;
-    var value;
     try {
-      json = JSON.parse($('#table script').text().slice(12, -2));   // "genAqiTable({...})"
-      value = self.info.species.indexOf(name);
+      json = JSON.parse(body);
     } catch (err) {
       return NaN;
     }
-    return json.d[value].iaqi;
+    return json.historic[name]['0'] || json.historic[name][0];
   },
 
 
@@ -76,14 +99,13 @@ module.exports = {
    */
   selectUpdateTime: function (body) {
     'use strict';
-    var $ = cheerio.load(body);
     var json;
     try {
-      json = JSON.parse($('#table script').text().slice(12, -2));   // "genAqiTable({...})"
+      json = JSON.parse(body);
     } catch (err) {
-      return new Date(0).toISOString();
+      return NaN;
     }
-    return json.t;
+      return new Date(json.time).toISOString();
   },
 
   /**
@@ -155,7 +177,7 @@ module.exports = {
   getAQIs: function (city, lang, callback) {
     'use strict';
     var self = this;
-    self.fetchWebPage(city, function (err, body) {
+    self.fetchAndroidAPI(city, function (err, body) {
       if (err) {
         callback(err);
       }
@@ -166,10 +188,10 @@ module.exports = {
       // 数据提供时间
       result.time = self.selectUpdateTime(body);
       // 全部 AQI 值
-      self.info.species.forEach(function (name) {
-        var aqi = self.selectAQIText(body, name);
+      self.info.pollutants.forEach(function (pollutant) {
+        var aqi = self.selectAQIText(body, pollutant.name);
         aqis.push(aqi);
-        result[name] = aqi;
+        result[pollutant.key] = aqi;
       });
       // 主要 AQI 值
       result.aqi = self.calculateAQI(aqis);
