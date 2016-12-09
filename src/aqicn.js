@@ -59,7 +59,7 @@ module.exports = {
     } catch (err) {
       return NaN;
     }
-    return json.historic[name]['0'] || json.historic[name][0];
+    return json.historic[name]['1'] || json.historic[name][0];
   },
 
 
