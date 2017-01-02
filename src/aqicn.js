@@ -59,9 +59,9 @@ module.exports = {
     } catch (err) {
       return NaN;
     }
-    return json.historic[name]['1'] || json.historic[name][0];
+    var historic = json.historic[name];
+    return historic['0'] || historic[0] || NaN;
   },
-
 
   /**
    * 分析 json 文件并返回更新时间
@@ -161,7 +161,9 @@ module.exports = {
       // 全部 AQI 值
       self.info.pollutants.forEach(function (pollutant) {
         var aqi = self.selectAQIText(body, pollutant.name);
-        aqis.push(aqi);
+        if (aqi) {
+          aqis.push(aqi);
+        }
         result[pollutant.key] = aqi;
       });
       // 主要 AQI 值
