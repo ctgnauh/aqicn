@@ -27,7 +27,7 @@ var aqicn = require('aqicn');
 ```javascript
 aqicn.getAQIs('beijing', 'cn', function (err, res) {
   console.log(res);
-};
+});
 ```
 
 输出：
@@ -57,7 +57,7 @@ aqicn.getAQIs('beijing', 'cn', function (err, res) {
 ```javascript
 aqicn.getAQIByName('beijing', 'pm25', function (err, res) {
   console.log(res);
-};
+});
 ```
 
 输出：
